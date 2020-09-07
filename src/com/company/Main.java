@@ -3,7 +3,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        String sentence = "gAWs";
+        String sentence = "«Мило, — Галина до Данила, — голим!»";
         String palindrome="";
         for (int i = 0; i < sentence.length(); i++)
         {
