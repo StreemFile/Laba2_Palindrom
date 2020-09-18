@@ -2,8 +2,7 @@ package com.company;
 
 public class Main {
 
-    public static void main(String[] args) {
-        String sentence = "«Мило, — Галина до Данила, — голим!»";
+    public static String removeAndLower(String sentence){
         String palindrome="";
         for (int i = 0; i < sentence.length(); i++)
         {
@@ -13,6 +12,11 @@ public class Main {
             }
         }
         palindrome = palindrome.toLowerCase();
+        return palindrome;
+    }
+    public static void main(String[] args) {
+        String sentence = "«Мило, — Галина до Данила, — голим!»";
+        String palindrome=removeAndLower(sentence);
         boolean isPalindrome = true;
         for (int i = 0; i<palindrome.length()/2; i++)
         {
@@ -23,13 +27,25 @@ public class Main {
                 break;
             }
         }
-        if (isPalindrome)
+        System.out.println(isPalindrome ? sentence + " - паліндром." : sentence + " - не паліндром");
+
+        //2 спосіб
+        sentence = "Ущипне — та шатен: пищу!";
+        palindrome=removeAndLower(sentence);
+        String reversedPalindrome = "";
+        for (int i = palindrome.length()-1; i >=0; i--)
         {
-            System.out.println(sentence + " - паліндром.");
+            reversedPalindrome += palindrome.charAt(i);
         }
-        else
-        {
-            System.out.println(sentence + " - не паліндром");
-        }
+        System.out.println(palindrome.equals(reversedPalindrome) ? sentence + " - паліндром" : sentence + " - не паліндром");
+
+        //3 спосіб
+        sentence = "Dammit I'm Mad";
+        palindrome=removeAndLower(sentence);
+        StringBuilder reversedBuilderPalindrome = new StringBuilder();
+        reversedBuilderPalindrome.append(palindrome);
+        reversedBuilderPalindrome = reversedBuilderPalindrome.reverse();
+        reversedPalindrome = reversedBuilderPalindrome.toString();
+        System.out.println(palindrome.equals(reversedPalindrome) ? sentence + " - паліндром" : sentence + " - не паліндром");
     }
 }
